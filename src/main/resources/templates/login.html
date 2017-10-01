@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot: Thymeleaf</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+<div class="container">
+    <img th:src="@{images/login_icon.png}" class="img-responsive center-block" width="50" height="60"
+         alt="login logo"/>
+
+    <form action="#" th:action="@{/login}" method="post">
+        <h3 class="form-signin-heading" th:text="#{login.form.title}"/>
+        <br/>
+        <div align="left" th:if="${param.error}">
+            <p style="font-size: 16; color: #FF1C19;">Invalid username or password.</p>
+        </div>
+        <div align="left" th:if="${param.logout}" class="error">
+            You have been logged out.
+        </div>
+
+        <input id="username" type="text" name="username" th:placeholder="#{placeholder.loginid}" class="form-control"
+               autocomplete="false" autofocus="true" required="true"/>
+        <input id="password" type="password" name="password" th:placeholder="#{placeholder.password}"
+               class="form-control" autocomplete="false" required="true"/>
+        <button name="login" type="submit" value="Login" th:text="Login" class="btn btn-lg btn-primary btn-block"/>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+description = "Spring Boot $version"
+defaultTasks "clean", "build"
+
+buildscript {
+    ext {
+        name = 'springboot'
+        group = 'io.stack.pj'
+        version = '1.0.0'
+        gradleVersion = '4.1'
+        springBootVersion = '1.5.7.RELEASE'
+        swaggerVersion = '2.7.0'
+        lombokVersion = '1.16.18'
+        thymeleafVersion = '3.0.7.RELEASE'
+        thymeleafExtraVersion = '3.0.1.RELEASE'
+        httpClientVersion = '4.5.3'
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
+        classpath "net.saliman:gradle-cobertura-plugin:2.5.0"
+    }
+}
+
+apply plugin: "java"
+apply plugin: "idea"
+apply plugin: "org.springframework.boot"
+apply plugin: "project-report"
+apply plugin: "io.spring.dependency-management"
+apply plugin: "org.sonarqube"
+apply plugin: "jacoco"
+apply plugin: "war"
+apply plugin: "net.saliman.cobertura"
+apply from: rootProject.file("tasks.gradle")
+
+sourceCompatibility = project.sourceCompatibility
+targetCompatibility = project.targetCompatibility
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+configurations {
+    provided
+    providedRuntime
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-actuator",
+            "org.springframework.boot:spring-boot-actuator-docs",
+            "org.springframework.boot:spring-boot-starter-data-jpa",
+            "org.springframework.boot:spring-boot-starter-security",
+            /*hot swapping, enable live reload*/
+            "org.springframework.boot:spring-boot-devtools",
+            "org.springframework.boot:spring-boot-starter-web",
+            "org.apache.httpcomponents:httpclient:$httpClientVersion",
+
+            "org.thymeleaf:thymeleaf:$thymeleafVersion",
+            "org.thymeleaf:thymeleaf-spring4:$thymeleafVersion",
+            "org.thymeleaf.extras:thymeleaf-extras-java8time:$thymeleafExtraVersion",
+            "nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.2.2",
+
+            "io.springfox:springfox-swagger2:$swaggerVersion",
+            "io.springfox:springfox-swagger-ui:$swaggerVersion",
+
+            "org.projectlombok:lombok:$lombokVersion",
+
+            runtime('mysql:mysql-connector-java')
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+
+    testCompile "org.springframework.boot:spring-boot-starter-test",
+            "org.springframework.security:spring-security-test",
+            "com.h2database:h2",
+            "junit:junit"
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+}
+
+springBoot {
+    mainClass = 'io.stack.pj.SpringbootApplication'
+}
+
+bootRepackage {
+    mainClass = 'io.stack.pj.SpringbootApplication'
+}
+
+//uncomment below lines, when there is error on javadoc generation and is stopping build
+//javadoc {
+//    failOnError = false
+//}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+war {
+    archiveName = 'ROOT.war'
+    manifest {
+        attributes("Implementation-Title": project.name,
+                "Implementation-Vendor": project.group,
+                "Created-By": project.group,
+                "Implementation-Date": java.time.ZonedDateTime.now(),
+                "Implementation-Version": project.version)
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.projectName", "spring-boot"
+        property "sonar.projectKey", "org.sonarqube:spring-boot"
+        property "sonar.dynamicAnalysis", "reuseReports"
+        property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
+        property "sonar.cobertura.reportPath", "build/reports/cobertura/coverage.xml"
+        property "sonar.java.coveragePlugin", "cobertura"
+        property "sonar.login", "sonar"
+        property "sonar.password", "sonar"
+    }
+}
