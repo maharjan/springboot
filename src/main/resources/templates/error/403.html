@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Spring Boot: Access Denied</title>
     <!--<div th:replace="fragments/header :: header-css"/>-->
 </head>
 <body>
@@ -8,16 +9,13 @@
 <!--<div th:replace="fragments/header :: header"/>-->
 
 <div class="container">
-
-    <div class="starter-template">
-        <h1>403 - Access is denied</h1>
-        <div th:inline="text">Hello '[[${#httpServletRequest.remoteUser}]]', you do not have permission to access this page.</div>
+    <h1 style="text-align: center; font-size: 40px; font-weight: bold; color: #ce8483">- Access denied -</h1>
+    <div th:inline="text" style="text-align: center; font-size: 18px;">Hello '[[${#httpServletRequest.remoteUser}]]', you do not have permission to access this
+        page.
     </div>
-
+    <p style="text-align: center;font-size: 12px;"><a th:href="@{/}">Home</a></p>
 </div>
 <!-- /.container -->
-
 <!--<div th:replace="fragments/footer :: footer"/>-->
-
 </body>
 </html>

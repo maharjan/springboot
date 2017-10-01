@@ -1,0 +1,33 @@
+spring:
+  jpa:
+    database: MYSQL
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  thymeleaf:
+    check-template: true
+    check-template-location: true
+    enabled: true
+    suffix: .html
+
+datasource:
+  databaseDriverName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/spring_boot?verifyServerCertificate=false&useSSL=false
+  username: root
+  password: test
+  maxPool: 100
+  maxIdle: 10
+
+resttemplate:
+  connectTimeout: 30000
+  socketTimeout: 15000
+  maxPerRoute: 25
+  maxTotalConnection: 100
+
+server:
+  port: 8110
+
+pool:
+  async-size: 50

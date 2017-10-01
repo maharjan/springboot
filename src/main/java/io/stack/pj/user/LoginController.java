@@ -2,6 +2,7 @@ package io.stack.pj.user;
 
 import io.stack.pj.user.auth.AuthSessionUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,15 @@ public class LoginController {
 
     @GetMapping(value = {"/", "/login"})
     public String login() {
+        if (AuthSessionUtil.getCurrentUser() != null) {
+            for (GrantedAuthority grantedAuthority : AuthSessionUtil.getCurrentUser().getAuthorities()) {
+                if (grantedAuthority.getAuthority().equals(Role.ROLE_USER.toString())) {
+                    return "redirect:/user";
+                } else if (grantedAuthority.getAuthority().equals(Role.ROLE_ADMIN.toString())) {
+                    return "redirect:/admin";
+                }
+            }
+        }
         return "login";
     }
 
