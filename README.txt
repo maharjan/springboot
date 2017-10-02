@@ -18,3 +18,6 @@ IMPORTANT:
   3) ./gradlew build
 
 - Log file is generated inside tomcat log folder and runtime log can be viewed on IDE console.
+
+- For API documentation : http://localhost:8080/swagger-ui.html
+- For HTTP request, SQL queries, Threads status etc : http://localhost:8080/monitoring
