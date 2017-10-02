@@ -19,7 +19,6 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
  * @since 1.0
  */
 @Slf4j
-@EnableAsync
 public abstract class AbstractAsyncConfig implements AsyncConfigurer {
 
     protected static final int QUEUE_SIZE = 1000;

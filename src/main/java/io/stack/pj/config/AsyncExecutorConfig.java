@@ -5,6 +5,7 @@ import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.util.concurrent.Executor;
 
@@ -13,6 +14,7 @@ import java.util.concurrent.Executor;
  * @since 1.0
  */
 @Configuration
+@EnableAsync
 @PropertySource(value= PropertyNames.APP_PROP_FILE, ignoreResourceNotFound = true)
 public class AsyncExecutorConfig extends AbstractAsyncConfig {
 

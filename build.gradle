@@ -13,6 +13,7 @@ buildscript {
         thymeleafVersion = '3.0.7.RELEASE'
         thymeleafExtraVersion = '3.0.1.RELEASE'
         httpClientVersion = '4.5.3'
+        javaMelodyVersion='1.69.0'
     }
 
     repositories {
@@ -68,12 +69,19 @@ dependencies {
             "org.thymeleaf.extras:thymeleaf-extras-java8time:$thymeleafExtraVersion",
             "nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.2.2",
 
+            "net.bull.javamelody:javamelody-core:$javaMelodyVersion",
             "io.springfox:springfox-swagger2:$swaggerVersion",
             "io.springfox:springfox-swagger-ui:$swaggerVersion",
 
-            "org.projectlombok:lombok:$lombokVersion",
+            "org.projectlombok:lombok:$lombokVersion"
 
-            runtime('mysql:mysql-connector-java')
+    compile("com.lowagie:itext:4.2.1") {
+        exclude group: "bouncycastle", module: "bcmail-jdk14"
+        exclude group: "bouncycastle", module: "bcprov-jdk14"
+        exclude group: "bouncycastle", module: "bctsp-jdk14"
+    }
+
+    runtime('mysql:mysql-connector-java')
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 
     testCompile "org.springframework.boot:spring-boot-starter-test",

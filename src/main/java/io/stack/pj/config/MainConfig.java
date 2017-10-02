@@ -11,7 +11,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * @since 1.0
  */
 @Configuration
-@Import(value = {DataSourceConfig.class, SwaggerConfig.class, AsyncExecutorConfig.class, SecurityConfig.class, RestTemplateConfig.class})
+@Import(value = {DataSourceConfig.class, SwaggerConfig.class,
+        AsyncExecutorConfig.class, SecurityConfig.class,
+        RestTemplateConfig.class, JavaMelodyConfig.class})
 @ComponentScan(basePackageClasses = {MainPackage.class})
 public class MainConfig {
 }

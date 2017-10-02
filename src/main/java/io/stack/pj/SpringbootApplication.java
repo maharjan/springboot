@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.session.SessionAutoConfiguration;
 import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 
 import java.util.Properties;
@@ -21,6 +22,7 @@ import java.util.Properties;
  * @version 1.0
  */
 @Import(value = MainConfig.class)
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 @SpringBootApplication(scanBasePackageClasses = {MainPackage.class},
         exclude = {DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class,
                 HibernateJpaAutoConfiguration.class, SessionAutoConfiguration.class,
