@@ -1,6 +1,5 @@
 package io.stack.pj.config;
 
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -103,6 +102,7 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**","/static/**").addResourceLocations("/resources/","/static/");
+        registry.addResourceHandler("/favicon.ico").addResourceLocations("/static/");
     }
 
 //    @Override
