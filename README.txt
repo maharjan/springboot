@@ -7,6 +7,9 @@ https://github.com/eugenp/tutorials/tree/master/spring-thymeleaf
 For Spring+Thymeleaf Details
 http://www.thymeleaf.org/doc/tutorials/3.0/thymeleafspring.html
 
+For in-depth Spring Boot Property configuration
+https://docs.spring.io/spring-boot/docs/1.4.x/reference/html/common-application-properties.html
+
 IMPORTANT:
 - Project setup for IntelliJ
 - Project on first run will create default admin & normal user login id (see Bootstrap)
@@ -21,3 +24,4 @@ IMPORTANT:
 
 - For API documentation : http://localhost:8080/swagger-ui.html
 - For HTTP request, SQL queries, Threads status etc : http://localhost:8080/monitoring
+

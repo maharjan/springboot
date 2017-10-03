@@ -1,7 +1,7 @@
 package io.stack.pj.config;
 
 import io.stack.pj.MainPackage;
-import io.stack.pj.Setting.MainDbSetting;
+import io.stack.pj.setting.MainDbSetting;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

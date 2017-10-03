@@ -14,6 +14,8 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import java.util.Locale;
 
 /**
+ * It will override the thymeleaf default configuration provided by spring boot.
+ *
  * @author Prajin Maharjan
  * @version 1.0
  */
@@ -101,7 +103,7 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**","/static/**").addResourceLocations("/resources/","/static/");
+        registry.addResourceHandler("/resources/**", "/static/**").addResourceLocations("/resources/", "/static/");
         registry.addResourceHandler("/favicon.ico").addResourceLocations("/static/");
     }
 

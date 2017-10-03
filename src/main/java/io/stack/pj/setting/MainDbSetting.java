@@ -1,4 +1,4 @@
-package io.stack.pj.Setting;
+package io.stack.pj.setting;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -6,6 +6,7 @@ import org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.util.Assert;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -26,7 +27,11 @@ public abstract class AbstractAsyncConfig implements AsyncConfigurer {
     protected static final String ASYNC_PREFIX = "async-";
 
     protected Executor getExecutor(final String name, final int minSize) {
+        Assert.notNull(minSize,"Async thread pool size must be defined.");
+        Assert.notNull(name,"Async thread pool name must be defined.");
+
         log.info("Creating async executor with name {} of size {}", name, minSize);
+
         final ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(minSize);
         executor.setMaxPoolSize(minSize * minSize);

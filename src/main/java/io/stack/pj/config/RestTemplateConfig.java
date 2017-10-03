@@ -1,6 +1,6 @@
 package io.stack.pj.config;
 
-import io.stack.pj.Setting.MainRestTemplateSetting;
+import io.stack.pj.setting.MainRestTemplateSetting;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;

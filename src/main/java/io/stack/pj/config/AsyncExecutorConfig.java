@@ -19,7 +19,7 @@ import java.util.concurrent.Executor;
 public class AsyncExecutorConfig extends AbstractAsyncConfig {
 
     @Value(PropertyNames.ASYNC_POOL)
-    private static int MIN_SIZE = 25;
+    private final int MIN_SIZE = 25;
 
     private static final String NAME = "spring-boot";
 

@@ -18,6 +18,8 @@ import org.springframework.context.annotation.Import;
 import java.util.Properties;
 
 /**
+ * This class have list of auto configuration excluded to allow custom configuration.
+ *
  * @author Prajin Maharjan
  * @version 1.0
  */

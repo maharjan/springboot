@@ -11,13 +11,16 @@ spring:
     check-template-location: true
     enabled: true
     suffix: .html
+  mvc:
+    favicon:
+      enabled: false
 
 datasource:
   databaseDriverName: com.mysql.jdbc.Driver
   url: jdbc:mysql://localhost:3306/spring_boot?verifyServerCertificate=false&useSSL=false
   username: root
   password: test
-  maxPool: 100
+  maxPool: 50
   maxIdle: 10
 
 resttemplate:
@@ -31,3 +34,6 @@ server:
 
 pool:
   async-size: 50
+
+session:
+  timeout: 300

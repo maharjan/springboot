@@ -1,7 +1,9 @@
 package io.stack.pj.user.auth;
 
+import io.stack.pj.shared.PropertyNames;
 import io.stack.pj.user.Role;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -24,25 +26,34 @@ import java.util.Collection;
  */
 @Slf4j
 @Component
-public class CustomAuthSuccessHandler extends AbstractAuthenticationTargetUrlRequestHandler implements AuthenticationSuccessHandler{
+public class CustomAuthSuccessHandler extends AbstractAuthenticationTargetUrlRequestHandler implements AuthenticationSuccessHandler {
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
+    // Session timeout, default is 30 mins
+    @Value(PropertyNames.SESSION_TIMEOUT)
+    private final Integer SESSION_TIMEOUT = 60 * 30;
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
-                                        HttpServletResponse response, Authentication authentication)
+                                        HttpServletResponse response,
+                                        Authentication authentication)
             throws IOException {
+
+        log.debug("Session timeout {} in seconds",SESSION_TIMEOUT);
+
+        request.getSession().setMaxInactiveInterval(SESSION_TIMEOUT);
         handle(request, response, authentication);
         HttpSession session = request.getSession(false);
-        if (session == null) {
-            return;
+        if (session != null) {
+            session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
         }
-        session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
     }
 
     @Override
     public void handle(HttpServletRequest request,
-                       HttpServletResponse response, Authentication authentication)
+                       HttpServletResponse response,
+                       Authentication authentication)
             throws IOException {
 
         String targetUrl = determineTargetUrl(authentication);

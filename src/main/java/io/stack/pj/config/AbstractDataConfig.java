@@ -1,6 +1,6 @@
 package io.stack.pj.config;
 
-import io.stack.pj.Setting.AbstractDBSetting;
+import io.stack.pj.setting.AbstractDBSetting;
 import io.stack.pj.hibernate.cfg.DefaultNamingStrategy;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.jdbc.pool.PoolProperties;
@@ -10,6 +10,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.util.Assert;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -21,7 +22,7 @@ import java.util.Map;
  * A common optimal datasource configuration that is capable for maximum performance.
  * <p>The maximum number of connections that should be kept in the pool at all times. Connections that are not used and
  * expired(minEvictableIdleTimeMillis) are closed, since the each connection requires lot of resources on physical system.</p>
- * <p>Setting maxActive to even highest three digit number is not suggested.</p>
+ * <p>setting maxActive to even highest three digit number is not suggested.</p>
  *
  * @author Prajin Maharjan
  * @see <a href="https://tomcat.apache.org/tomcat-8.0-doc/jdbc-pool.html">Tomcat datasource</a>
@@ -39,6 +40,9 @@ abstract class AbstractDataConfig {
     private static final String RESET_ABANDON_TIMER = "org.apache.tomcat.jdbc.pool.interceptor.ResetAbandonedTimer";
 
     protected DataSource buildDataSource(AbstractDBSetting dbSetting) {
+        Assert.notNull(dbSetting,"Datasource config bean must be defined");
+        Assert.notNull(dbSetting.getDatabaseDriverName(),"Datasource driver name must be defined");
+        Assert.notNull(dbSetting.getUrl(),"Datasource database url must be defined");
         log.info("Building datasource for {}", dbSetting.toString());
 
         final PoolProperties props = new PoolProperties();

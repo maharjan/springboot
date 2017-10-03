@@ -1,6 +1,6 @@
 package io.stack.pj.config;
 
-import io.stack.pj.Setting.AbstractRestTemplateSetting;
+import io.stack.pj.setting.AbstractRestTemplateSetting;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HeaderElement;
 import org.apache.http.HeaderElementIterator;
@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Creates pool based connection manager with connection and socket timeout also the number of routes per host.
+ *
  * @author Prajin Maharjan
  * @version 1.0
  */

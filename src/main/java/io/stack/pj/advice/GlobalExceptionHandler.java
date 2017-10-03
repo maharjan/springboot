@@ -1,5 +1,6 @@
 package io.stack.pj.advice;
 
+import io.stack.pj.exception.AuthFailException;
 import io.stack.pj.exception.ClientException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -7,7 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
@@ -21,6 +26,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
+//    @ExceptionHandler(AuthFailException.class)
+//    public String authFailException(AuthFailException exe) {
+//        log.error(exe.getMessage());
+//        return "login";
+//    }
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ClientErrorMessage> illegalException(IllegalArgumentException exe) {
