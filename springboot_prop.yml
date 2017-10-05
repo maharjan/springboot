@@ -28,7 +28,7 @@ spring:
 
 logging:
   level:
-    root: ALL
+    root: DEBUG
     io.stack.pj: DEBUG
     org.apache.http.wire: DEBUG
     org.springframework.data: DEBUG
@@ -73,9 +73,9 @@ logging:
   level:
     root: INFO
     io.stack.pj: INFO
-    org.apache.http.wire: INFO
-    org.springframework.data: INFO
-    org.springframework.security: INFO
+    org.apache.http.wire: WARN
+    org.springframework.data: WARN
+    org.springframework.security: WARN
 
 datasource:
   databaseDriverName: com.mysql.jdbc.Driver
