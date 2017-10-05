@@ -25,3 +25,9 @@ IMPORTANT:
 - For API documentation : http://localhost:8080/swagger-ui.html
 - For HTTP request, SQL queries, Threads status etc : http://localhost:8080/monitoring
 
+Project Setup:-
+git clone https://github.com/maharjan/springboot.git
+cd springboot/
+gradle wrapper
+./gradlew clean cleanIdea idea
+./gradlew build

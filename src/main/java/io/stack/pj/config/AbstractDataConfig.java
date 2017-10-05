@@ -75,7 +75,7 @@ abstract class AbstractDataConfig {
     private Map<String, Object> jpaProperties() {
         Map<String, Object> props = new HashMap<>();
         props.put("hibernate.hbm2ddl.auto", "update");
-        props.put("hibernate.dialect", DB_DIALECT);
+//        props.put("hibernate.dialect", DB_DIALECT);
         props.put("hibernate.physical_naming_strategy", DefaultNamingStrategy.class.getName());
         props.put("hibernate.cache.use_second_level_cache", false);
         props.put("hibernate.cache.use_query_cache", false);

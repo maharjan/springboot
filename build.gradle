@@ -6,7 +6,7 @@ buildscript {
         name = 'springboot'
         group = 'io.stack.pj'
         version = '1.0.0'
-        gradleVersion = '4.1'
+        gradleVersion = '4.2.1'
         springBootVersion = '1.5.7.RELEASE'
         swaggerVersion = '2.7.0'
         lombokVersion = '1.16.18'
@@ -14,6 +14,7 @@ buildscript {
         thymeleafExtraVersion = '3.0.1.RELEASE'
         httpClientVersion = '4.5.3'
         javaMelodyVersion='1.69.0'
+        h2Version='1.4.196'
     }
 
     repositories {
@@ -81,7 +82,8 @@ dependencies {
         exclude group: "bouncycastle", module: "bctsp-jdk14"
     }
 
-    runtime('mysql:mysql-connector-java')
+    compile "com.h2database:h2:$h2Version"
+    runtime "mysql:mysql-connector-java"
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 
     testCompile "org.springframework.boot:spring-boot-starter-test",

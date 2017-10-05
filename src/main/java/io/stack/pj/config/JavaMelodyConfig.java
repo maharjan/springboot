@@ -7,6 +7,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ import javax.servlet.ServletException;
  * @version 1.0
  */
 @Configuration
+@Profile("dev")
 public class JavaMelodyConfig implements ServletContextInitializer {
 
     @Override

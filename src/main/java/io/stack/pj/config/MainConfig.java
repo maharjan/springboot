@@ -18,8 +18,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
         SwaggerConfig.class,
         AsyncExecutorConfig.class,
         SecurityConfig.class,
-        RestTemplateConfig.class,
-        JavaMelodyConfig.class
+        RestTemplateConfig.class
 })
 @ComponentScan(basePackageClasses = {MainPackage.class})
 public class MainConfig {

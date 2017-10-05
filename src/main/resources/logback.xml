@@ -4,7 +4,7 @@
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>
-                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{72} - %msg%n
             </pattern>
         </encoder>
     </appender>
@@ -13,7 +13,7 @@
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${catalina.base}/logs/springboot.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} -
+            <Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{72} -
                 %msg%n
             </Pattern>
         </encoder>
@@ -32,8 +32,8 @@
         <appender-ref ref="FILE"/>
     </root>
 
-    <logger name="org.apache.http.wire" level="ERROR" />
-    <logger name="org.springframework.data" level="ERROR" />
-    <logger name="org.springframework.security" level="ERROR" />
-    <logger name="io.stack.pj" level="ALL" />
+    <!--<logger name="org.apache.http.wire" level="ERROR" />-->
+    <!--<logger name="org.springframework.data" level="ERROR" />-->
+    <!--<logger name="org.springframework.security" level="ERROR" />-->
+    <!--<logger name="io.stack.pj" level="ALL" />-->
 </configuration>
