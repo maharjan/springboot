@@ -43,7 +43,7 @@ datasource:
   maxIdle: 10
 
 resttemplate:
-  connectTimeout: 30000
+  connectTimeout: 15000
   socketTimeout: 15000
   maxPerRoute: 10
   maxTotalConnection: 20
@@ -87,7 +87,7 @@ datasource:
 
 resttemplate:
   connectTimeout: 30000
-  socketTimeout: 15000
+  socketTimeout: 20000
   maxPerRoute: 25
   maxTotalConnection: 50
 

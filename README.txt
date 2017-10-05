@@ -20,8 +20,10 @@ IMPORTANT:
   2) ./gradlew clean cleanIdea idea
   3) ./gradlew build
 
+- Profile based configuration, such that under 'dev' profile the H2 database will be used and swagger is available.
+  While under 'prod' MySQL is used and swagger is obstructed.
+  Similarly, log level, pool, session timeout are configured differently for different profiles
 - Log file is generated inside tomcat log folder and runtime log can be viewed on IDE console.
-
 - For API documentation : http://localhost:8080/swagger-ui.html
 - For HTTP request, SQL queries, Threads status etc : http://localhost:8080/monitoring
 
