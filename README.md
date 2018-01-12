@@ -28,7 +28,7 @@ For in-depth Spring Boot Property configuration
 - For HTTP request, SQL queries, Threads status etc : http://localhost:8080/monitoring
 
 **Project Setup**:-
-```bash
+```
 git clone https://github.com/maharjan/springboot.git
 cd springboot/
 gradle wrapper
