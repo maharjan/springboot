@@ -1,16 +1,16 @@
 For spring boot application console text banner generation:
-https://devops.datenkollektiv.de/banner.txt/index.html
+[Banner Generation](https://devops.datenkollektiv.de/banner.txt/index.html)
 
 For Thymeleaf setup
-https://github.com/eugenp/tutorials/tree/master/spring-thymeleaf
+[Thymeleaf](https://github.com/eugenp/tutorials/tree/master/spring-thymeleaf)
 
 For Spring+Thymeleaf Details
-http://www.thymeleaf.org/doc/tutorials/3.0/thymeleafspring.html
+[Spring + Thymeleaf](http://www.thymeleaf.org/doc/tutorials/3.0/thymeleafspring.html)
 
 For in-depth Spring Boot Property configuration
-https://docs.spring.io/spring-boot/docs/1.4.x/reference/html/common-application-properties.html
+[Spring Boot](https://docs.spring.io/spring-boot/docs/1.4.x/reference/html/common-application-properties.html)
 
-IMPORTANT:
+**IMPORTANT**:
 - Project setup for IntelliJ
 - Project on first run will create default admin & normal user login id (see Bootstrap)
 - Application basic property config sample is in springboot_prop.yml. This file must be copied to apache tomcat conf folder.
