@@ -50,7 +50,7 @@ public final class DateFormatUtil {
         }
     }
 
-    private static Calendar getCalendar() {
+    public static Calendar getCalendar() {
         Calendar calendar = GregorianCalendar.getInstance();
         calendar.setTime(new Date());
         return calendar;

@@ -5,29 +5,28 @@ buildscript {
     ext {
         name = 'springboot'
         group = 'io.stack.pj'
-        version = '1.0.0'
-        gradleVersion = '4.2.1'
-        springBootVersion = '1.5.7.RELEASE'
-        swaggerVersion = '2.7.0'
-        lombokVersion = '1.16.18'
-        thymeleafVersion = '3.0.7.RELEASE'
+        version = '1.0.1'
+        gradleVersion = '4.5.1'
+        springBootVersion = '1.5.10.RELEASE'
+        swaggerVersion = '2.8.0'
+        lombokVersion = '1.16.20'
+        thymeleafVersion = '3.0.9.RELEASE'
         thymeleafExtraVersion = '3.0.1.RELEASE'
-        httpClientVersion = '4.5.3'
-        javaMelodyVersion='1.69.0'
+        httpClientVersion = '4.5.5'
+        javaMelodyVersion='1.71.0'
         h2Version='1.4.196'
     }
 
     repositories {
         mavenLocal()
         mavenCentral()
-        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath "io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE"
-        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
-        classpath "net.saliman:gradle-cobertura-plugin:2.5.0"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.1"
+        classpath "net.saliman:gradle-cobertura-plugin:2.5.4"
     }
 }
 
@@ -152,3 +151,6 @@ sonarqube {
         property "sonar.password", "sonar"
     }
 }
+
+
+but

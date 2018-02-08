@@ -2,6 +2,8 @@ package io.stack.pj.startup;
 
 import io.stack.pj.user.*;
 import io.stack.pj.user.resource.UserCreateRequest;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,7 +29,7 @@ public class Bootstrap {
 
     @PostConstruct
     public void defaultUser() {
-        if (userService.countUsers() == 0) {
+           if (userService.countUsers() == 0) {
             log.debug("Creating admin user: admin/sa@1234");
             List<Role> adminRole = new ArrayList<>();
             adminRole.add(Role.ROLE_ADMIN);

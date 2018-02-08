@@ -2,11 +2,14 @@ package io.stack.pj.user.impl;
 
 import io.stack.pj.user.*;
 import io.stack.pj.user.resource.UserCreateRequest;
+import io.stack.pj.user.resource.UserInfoResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @author Prajin Maharjan
@@ -49,5 +52,10 @@ class UserServiceImpl implements UserService {
             adminRole.setUser(user);
             userRoleRepository.save(adminRole);
         }
+    }
+
+    @Override
+    public List<UserInfoResponse> getUsers(){
+        return null;
     }
 }
