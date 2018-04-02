@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: test
+  jpa:
+    name: spring-boot
+    database: H2
+    show-sql: true
+    generate-ddl: true
+
+datasource:
+  databaseDriverName: org.h2.Driver
+  url: jdbc:h2:mem:springboot_testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  username: sa
+  password:
+  platform: h2
+
+redis:
+  host: localhost
+  port: 6379
+
+pool:
+  async-size: 10

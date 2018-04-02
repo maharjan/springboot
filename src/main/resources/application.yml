@@ -1,0 +1,101 @@
+spring:
+  profiles:
+    active: "prod"
+  thymeleaf:
+    check-template: true
+    check-template-location: true
+    enabled: true
+    suffix: .html
+  mvc:
+    favicon:
+      enabled: false
+
+---
+
+spring:
+  profiles: dev
+  jpa:
+    database: H2
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    generate-ddl: true
+    openInView: false
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate.cache.use_query_cache: false
+      hibernate.generate_statistics: true
+
+logging:
+  level:
+    root: ALL
+    io.stack.pj: DEBUG
+    org.apache.http.wire: DEBUG
+    org.springframework.data: DEBUG
+    org.springframework.security: DEBUG
+
+datasource:
+  databaseDriverName: org.h2.Driver
+  url: jdbc:h2:mem:spring_boot;DB_CLOSE_DELAY=-1
+  username: sa
+  password:
+  maxPool: 20
+  maxIdle: 10
+
+resttemplate:
+  connectTimeout: 15000
+  socketTimeout: 15000
+  maxPerRoute: 10
+  maxTotalConnection: 20
+
+server:
+  port: 8110
+
+session:
+  timeout: 300
+
+pool:
+  async-size: 20
+
+---
+
+spring:
+  profiles: prod
+  jpa:
+    database: MYSQL
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    root: INFO
+    io.stack.pj: INFO
+    org.apache.http.wire: INFO
+    org.springframework.data: INFO
+    org.springframework.security: INFO
+
+datasource:
+  databaseDriverName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/spring_boot?verifyServerCertificate=false&useSSL=false
+  username: root
+  password: test
+  maxPool: 50
+  maxIdle: 10
+
+resttemplate:
+  connectTimeout: 30000
+  socketTimeout: 20000
+  maxPerRoute: 25
+  maxTotalConnection: 50
+
+server:
+  port: 8080
+
+session:
+  timeout: 1800
+
+pool:
+  async-size: 50

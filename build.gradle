@@ -37,7 +37,7 @@ apply plugin: "project-report"
 apply plugin: "io.spring.dependency-management"
 apply plugin: "org.sonarqube"
 apply plugin: "jacoco"
-apply plugin: "war"
+//apply plugin: "jar"
 apply plugin: "net.saliman.cobertura"
 apply from: rootProject.file("tasks.gradle")
 
@@ -69,21 +69,21 @@ dependencies {
             "org.thymeleaf.extras:thymeleaf-extras-java8time:$thymeleafExtraVersion",
             "nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.2.2",
 
-            "net.bull.javamelody:javamelody-core:$javaMelodyVersion",
+//            "net.bull.javamelody:javamelody-core:$javaMelodyVersion",
             "io.springfox:springfox-swagger2:$swaggerVersion",
             "io.springfox:springfox-swagger-ui:$swaggerVersion",
 
             "org.projectlombok:lombok:$lombokVersion"
 
-    compile("com.lowagie:itext:4.2.1") {
-        exclude group: "bouncycastle", module: "bcmail-jdk14"
-        exclude group: "bouncycastle", module: "bcprov-jdk14"
-        exclude group: "bouncycastle", module: "bctsp-jdk14"
-    }
+//    compile("com.lowagie:itext:4.2.1") {
+//        exclude group: "bouncycastle", module: "bcmail-jdk14"
+//        exclude group: "bouncycastle", module: "bcprov-jdk14"
+//        exclude group: "bouncycastle", module: "bctsp-jdk14"
+//    }
 
     compile "com.h2database:h2:$h2Version"
     runtime "mysql:mysql-connector-java"
-    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+    compile('org.springframework.boot:spring-boot-starter-tomcat')
 
     testCompile "org.springframework.boot:spring-boot-starter-test",
             "org.springframework.security:spring-security-test",
@@ -110,11 +110,13 @@ sourceSets {
 }
 
 springBoot {
-    mainClass = 'io.stack.pj.SpringbootApplication'
+//    mainClass = 'io.stack.pj.SpringbootApplication'
+    mainClass = 'io.stack.pj.Application'
 }
 
 bootRepackage {
-    mainClass = 'io.stack.pj.SpringbootApplication'
+//    mainClass = 'io.stack.pj.SpringbootApplication'
+    mainClass = 'io.stack.pj.Application'
 }
 
 //uncomment below lines, when there is error on javadoc generation and is stopping build
@@ -127,16 +129,16 @@ artifacts {
     archives javadocJar
 }
 
-war {
-    archiveName = 'ROOT.war'
-    manifest {
-        attributes("Implementation-Title": project.name,
-                "Implementation-Vendor": project.group,
-                "Created-By": project.group,
-                "Implementation-Date": java.time.ZonedDateTime.now(),
-                "Implementation-Version": project.version)
-    }
-}
+//war {
+//    archiveName = 'ROOT.war'
+//    manifest {
+//        attributes("Implementation-Title": project.name,
+//                "Implementation-Vendor": project.group,
+//                "Created-By": project.group,
+//                "Implementation-Date": java.time.ZonedDateTime.now(),
+//                "Implementation-Version": project.version)
+//    }
+//}
 
 sonarqube {
     properties {
@@ -151,6 +153,3 @@ sonarqube {
         property "sonar.password", "sonar"
     }
 }
-
-
-but

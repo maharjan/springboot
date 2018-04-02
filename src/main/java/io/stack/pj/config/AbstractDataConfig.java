@@ -29,7 +29,6 @@ import java.util.Map;
  * @since 1.0
  */
 @Slf4j
-@EnableTransactionManagement
 abstract class AbstractDataConfig {
 
     private static final String QUERY = "SELECT 1";

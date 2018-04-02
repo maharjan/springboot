@@ -15,7 +15,7 @@ import java.util.concurrent.Executor;
  */
 @Configuration
 @EnableAsync
-@PropertySource(value= PropertyNames.APP_PROP_FILE, ignoreResourceNotFound = true)
+//@PropertySource(value= PropertyNames.APP_PROP_FILE, ignoreResourceNotFound = true)
 public class AsyncExecutorConfig extends AbstractAsyncConfig {
 
     @Value(PropertyNames.ASYNC_POOL)

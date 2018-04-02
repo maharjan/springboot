@@ -1,7 +1,5 @@
 package io.stack.pj.user.auth;
 
-import io.stack.pj.exception.AuthFailException;
-import io.stack.pj.exception.ClientException;
 import io.stack.pj.user.impl.DefaultUserDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
