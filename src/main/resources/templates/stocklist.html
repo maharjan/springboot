@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Stock List</title>
+    <link th:href="@{/css/stocklist.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Page Content -->
+<div class="container">
+
+    <!-- component template -->
+    <script type="text/x-template" id="grid-template">
+        <table>
+            <thead>
+            <tr>
+                <th v-for="key in columns"
+                    @click="sortBy(key)"
+                    :class="{ active: sortKey == key }">
+                    {{ key | capitalize }}
+                    <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
+          </span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="entry in filteredData">
+                <td v-for="key in columns">
+                    {{ entry[key] }}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </script>
+
+    <!-- demo root element -->
+    <div id="demo">
+        <form id="search">
+            Search <input name="query" v-model="searchQuery">
+        </form>
+        <demo-grid
+                :data="gridData"
+                :columns="gridColumns"
+                :filter-key="searchQuery">
+        </demo-grid>
+    </div>
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Giau 2018</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<script th:src="@{/js/vue.js}"></script>
+<script th:src="@{/js/axios.js}"></script>
+<script th:src="@{/js/stocklist.js}"></script>
+</body>
+</html>
